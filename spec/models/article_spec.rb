@@ -14,8 +14,28 @@ describe Article do
     expect( subject ).to respond_to :created_at
   end
 
-  it "has one user" do
+  it "belong to user" do
     expect(subject).to belong_to :user
   end
+
+  it "have many votes" do
+    expect(subject).to have_many :votes
+  end
+
+  describe "votes count" do
+    it 'exist' do
+      expect( subject ).to respond_to :votes_count
+    end
+
+    it "caches votes conunt" do
+      article = create :article
+      expect {
+        create :vote, article: article
+        article.reload
+      }.to change(article, :votes_count).to(1)
+    end
+
+  end
+
 
 end
