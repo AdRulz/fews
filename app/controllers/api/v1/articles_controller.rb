@@ -1,6 +1,6 @@
 module Api::V1
   class ArticlesController < BaseController
-    load_and_authorize_resource except: [ :vote ]
+    load_and_authorize_resource except: [ :vote, :my ]
 
     def vote
       article = Article.find(params[:id])
@@ -9,9 +9,15 @@ module Api::V1
       else
         render json: nil, status: 400
       end
-
     end
 
+    def my
+      if current_user
+        render current_user.articles
+      else
+        render json: nil, status: 401
+      end
+    end
 
     def permitted_params
       params.permit(:article => [:title, :body])
