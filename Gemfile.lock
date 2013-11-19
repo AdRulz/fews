@@ -31,6 +31,7 @@ GEM
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
     builder (3.1.4)
+    cancan (1.6.10)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
@@ -138,6 +139,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   bcrypt-ruby (~> 3.1.2)
+  cancan
   factory_girl_rails
   inherited_resources
   jbuilder (~> 1.2)

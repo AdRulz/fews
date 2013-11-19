@@ -1,6 +1,5 @@
 module Api::V1
   class SessionsController < BaseController
-
     def create
       if authenticate_with_credentials
         render json: current_user, serializer: SessionSerializer
@@ -16,10 +15,8 @@ module Api::V1
 
       if user && user.authenticate(params[:password])
         @current_user = user
-        return true
       else
         @current_user = nil
-        return false
       end
     end
 

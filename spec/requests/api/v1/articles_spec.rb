@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "GET /api/v1/articles.json" do
+describe "list", "GET /api/v1/articles.json" do
 
   before do
     create :article
@@ -11,10 +11,40 @@ describe "GET /api/v1/articles.json" do
     expect(response).to be_success
   end
 
-
   it "respond json collection of articles" do
     expect(response.body).to have_json_path "articles/0/title"
     expect(response.body).to have_json_path "articles/0/body"
+  end
+
+end
+
+describe 'update', "PUT /api/v1/articles.json" do
+  let(:user) { create :user, token: 'xxx' }
+  let!(:article) { create :article, user: user }
+
+  context 'as an author' do
+    before do
+      put "/api/v1/articles/#{article.id}.json/", article: {title: 'Updated title'}, token: 'xxx'
+    end
+
+    it 'success (200)' do
+      expect(response).to be_success
+    end
+
+    #it "respond json collection of articles" do
+    #expect(response.body).to have_json_path "articles/0/title"
+    #expect(response.body).to have_json_path "articles/0/body"
+    #end
+  end
+
+  context 'as an other user or guest' do
+    before do
+      put "/api/v1/articles/#{article.id}.json/", article: {title: 'Updated title' }, token: nil
+    end
+
+    it 'unauthorized (401)' do
+      expect(response.status).to eql 401
+    end
   end
 
 end
