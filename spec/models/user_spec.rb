@@ -22,9 +22,12 @@ describe User do
     end
   end
 
+  it "has many articles" do
+    expect(subject).to have_many :articles
+  end
+
   it "authenticable" do
     expect(user.authenticate(user.password)).to be_true
     expect(user.authenticate('randmstring')).to_not be_true
   end
-
 end

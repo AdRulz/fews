@@ -14,4 +14,8 @@ describe Article do
     expect( subject ).to respond_to :created_at
   end
 
+  it "has one user" do
+    expect(subject).to belong_to :user
+  end
+
 end

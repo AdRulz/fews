@@ -10,10 +10,11 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 
 
-group :development, :test do
+group :test do
   gem 'rspec-rails'
   gem 'json_spec'
   gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
 end
 
 group :doc do
