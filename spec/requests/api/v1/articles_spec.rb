@@ -12,7 +12,7 @@ describe "GET /api/v1/articles.json" do
   end
 
 
-  it "respond with articles" do
+  it "respond json collection of articles" do
     expect(response.body).to have_json_path "articles/0/title"
     expect(response.body).to have_json_path "articles/0/body"
   end
