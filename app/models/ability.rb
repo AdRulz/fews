@@ -6,6 +6,7 @@ class Ability
     user ||= guest
 
     can :read, Article
+    can :create, Article if user.id
     can :update, Article, user_id: user.id
 
   end
