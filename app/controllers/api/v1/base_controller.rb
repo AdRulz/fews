@@ -7,6 +7,10 @@ class Api::V1::BaseController < InheritedResources::Base
     render json: { error: exception.message }, status: 401
   end
 
+  rescue_from ActionController::ParameterMissing do |exception|
+    render json: { error: exception.message }, status: 400
+  end
+
   protected
 
   def current_user
