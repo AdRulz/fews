@@ -66,3 +66,22 @@ describe 'update article', "PUT /api/v1/articles.json" do
     end
   end
 end
+
+describe 'delete article', "DELETE /api/v1/articles.json" do
+  let(:user) { create :user, token: 'xxx' }
+  let!(:article) { create :article, user: user }
+
+  context 'as an author' do
+    it 'success (204)' do
+      delete "/api/v1/articles/#{article.id}.json/", token: 'xxx'
+      expect(response.status).to eql 204
+    end
+  end
+
+  context 'as an other user or guest' do
+    it 'unauthorized (401)' do
+      delete "/api/v1/articles/#{article.id}.json/"
+      expect(response.status).to eql 401
+    end
+  end
+end
