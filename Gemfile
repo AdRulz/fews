@@ -16,6 +16,7 @@ group :test do
   gem 'json_spec'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
+  gem 'database_cleaner'
 end
 
 group :doc do

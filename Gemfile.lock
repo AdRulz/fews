@@ -32,6 +32,7 @@ GEM
     bcrypt-ruby (3.1.2)
     builder (3.1.4)
     cancan (1.6.10)
+    database_cleaner (1.2.0)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
@@ -140,6 +141,7 @@ DEPENDENCIES
   active_model_serializers
   bcrypt-ruby (~> 3.1.2)
   cancan
+  database_cleaner
   factory_girl_rails
   inherited_resources
   jbuilder (~> 1.2)
