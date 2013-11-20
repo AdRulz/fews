@@ -6,13 +6,16 @@ Fews.UserRoute = Ember.Route.extend({
 
   setupController: function (controller, model){
     this.get('session').set('currentUser', model);
-    this.transitionTo('feed');
+  },
+
+
+  renderTemplate: function () {
+    return;
   },
 
   actions: {
     error: function () {
       this.get('session').unauthenticate();
-      this.transitionTo('feed');
     },
   }
 

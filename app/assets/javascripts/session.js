@@ -27,6 +27,8 @@ Fews.Session = Ember.Object.extend({
       currentUser: null,
     });
     this.syncCookie();
+    var router = Fews.__container__.lookup('router:main');
+    router.transitionTo('feed');
   },
 
   ensureCurrentUser: function () {

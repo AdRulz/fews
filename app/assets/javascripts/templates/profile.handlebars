@@ -2,8 +2,16 @@
   <span class="caret"></span>
 </a>
 <ul class="dropdown-menu">
-  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">My articles <span class="badge pull-right">42</span></a></li>
+  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">
+    My few articles 
+    <span class="badge pull-right">{{session.currentUser.articles.length}}</span>
+  </a>
+  </li>
 
   <li role="presentation" class="divider"></li>
-  <li role="presentation"><a role="menuitem" tabindex="-1" {{action signout}} href="#">Sign out</a></li>
+  <li role="presentation"><a role="menuitem" tabindex="-1" {{action signout}} href="#">
+    Sign out 
+    <span class="pull-right glyphicon glyphicon-log-out text-muted"></span>
+  </a>
+  </li>
 </ul>
