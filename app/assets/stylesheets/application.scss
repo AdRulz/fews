@@ -25,11 +25,35 @@ body{
   text-transform: uppercase;
 
 }
+.article-action{
+  margin-top: 20px;
+}
 
 
 .dropdown-menu{
-  min-width: 200px ;
+  min-width: 200px;
+
+  .badge{
+    background: #2FA4EB;
+  }
+
+  :hover > .badge{
+    background: #fff;
+    color: #2FA4EB;
+  }
+
 }
+
+.navbar .dropdown-menu{
+  :hover > .glyphicon{
+    color: #fff;
+  }
+
+  .glyphicon{
+    color: #2FA4EB;
+  }
+}
+
 .dropdown-form{
   min-width: 250px ;
   padding: 20px;

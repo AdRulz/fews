@@ -1,0 +1,21 @@
+<div class="col-sm-10 col-sm-offset-2">
+  <h3 class='text-muted text-center'>Edit article</h3>
+</div>
+
+{{partial 'article/form'}}
+
+<div class="form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+    <button {{action delete}} class="btn btn-warning ">
+      <span class="glyphicon glyphicon-trash"></span>
+    </button>
+    <div class="pull-right">
+      <button {{action cancel}} class="btn btn-default">
+        <span class="glyphicon glyphicon-arrow-left"></span>
+      </button>
+      <button {{action save}} class="btn btn-primary">
+        <span class="glyphicon glyphicon-ok"></span>
+      </button>
+    </div>
+  </div>
+</div>

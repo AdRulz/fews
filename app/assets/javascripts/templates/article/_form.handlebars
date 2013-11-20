@@ -1,0 +1,15 @@
+<form class="form-horizontal" role="form">
+
+  <div {{bindAttr class=":form-group errors.title:has-error"}}>
+    <label class="col-sm-2 control-label">Title</label>
+    <div class="col-sm-10">
+      {{input type="text" classNames="form-control input-lg" value=title}}
+    </div>
+  </div>
+  <div {{bindAttr class=":form-group errors.body:has-error"}}>
+    <label class="col-sm-2 control-label">Content</label>
+    <div class="col-sm-10">
+      {{textarea classNames="form-control" rows=15 value=body}}
+    </div>
+  </div>
+</form>

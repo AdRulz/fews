@@ -4,6 +4,9 @@ Fews.Article = DS.Model.extend({
   author: DS.attr(),
   createdAt: DS.attr('date'),
   votesCount: DS.attr('number'),
+  createdAtTimestamp: function () {
+    return moment(this.get('createdAt')).format('X');
+  }.property('createdAt'),
 
 
 });

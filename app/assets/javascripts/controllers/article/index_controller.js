@@ -1,4 +1,4 @@
-Fews.ArticleController = Ember.ObjectController.extend({
+Fews.ArticleIndexController = Ember.ObjectController.extend({
 
   canEdit:function () {
     var currentUser = this.get('session.currentUser');

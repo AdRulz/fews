@@ -7,8 +7,6 @@ Fews.ArticlesNewController = Ember.ObjectController.extend({
       var controller = this;
       this.get('model').save().then(function (model) {
         controller.transitionToRoute('article', model);
-      }, function(){
-        console.log('error');
       });
 
     },

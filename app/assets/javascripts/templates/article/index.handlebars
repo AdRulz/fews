@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <h3>{{title}}</h3>
+  </div>
+  <div class="col-xs-2">
+    {{#if canEdit}}
+    <div class='article-action pull-right dropdown'>
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <span class="glyphicon glyphicon-cog"></span>
+      </a>
+      <ul class="dropdown-menu" role="menu">
+        <li role="presentation">
+        {{#linkTo 'article.edit' this}}
+          Edit
+          <span class="glyphicon glyphicon-edit pull-right"></span>
+        {{/linkTo}}
+        </li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" {{action delete}}>
+          Delete
+          <span class="glyphicon glyphicon-trash pull-right"></span>
+        </a></li>
+      </ul>
+    </div>
+    {{/if}}
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 text-center">
+    <div class="article-day text-center">
+      {{moment createdAt format='D'}}
+    </div>
+    <div class="article-weekday text-center">
+      {{moment createdAt format='dddd'}}
+    </div>
+
+    {{#with votesCount}}
+      <span class='label label-primary'>
+        <span class="glyphicon glyphicon-thumbs-up"></span> {{this}}
+      </span>
+    {{/with}}
+
+  </div>
+  <div class="col-xs-10">
+    <p> {{body}} </p>
+  </div>
+</div>
