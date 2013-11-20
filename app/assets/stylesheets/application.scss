@@ -1,0 +1,33 @@
+@import 'bootstrap';
+
+body{
+  padding-top: 50px;
+}
+
+.container{
+  max-width: 700px;
+}
+
+.navbar-brand{
+  font-size: 44px;
+  text-transform: uppercase;
+}
+
+.article-day{
+  font-size: 30px;
+  font-weight: 200;
+}
+
+
+.article-weekday{
+  font-size: 12px;
+  text-transform: uppercase;
+
+}
+
+
+.dropdown-form{
+  min-width: 250px ;
+  padding: 20px;
+
+}

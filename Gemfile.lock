@@ -29,11 +29,28 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.1)
     atomic (1.1.14)
+    barber (0.4.2)
+      ember-source
+      execjs
+      handlebars-source
     bcrypt-ruby (3.1.2)
     builder (3.1.4)
     cancan (1.6.10)
     database_cleaner (1.2.0)
     diff-lcs (1.2.5)
+    ember-data-source (0.14)
+      ember-source
+    ember-rails (0.14.0)
+      active_model_serializers
+      barber (>= 0.4.1)
+      ember-data-source
+      ember-source
+      execjs (>= 1.2)
+      handlebars-source
+      jquery-rails (>= 1.0.17)
+      railties (>= 3.1)
+    ember-source (1.1.2)
+      handlebars-source (= 1.0.12)
     erubis (2.7.0)
     execjs (2.0.2)
     factory_girl (4.3.0)
@@ -41,6 +58,7 @@ GEM
     factory_girl_rails (4.3.0)
       factory_girl (~> 4.3.0)
       railties (>= 3.0.0)
+    handlebars-source (1.0.12)
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -64,6 +82,8 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25)
     minitest (4.7.5)
+    momentjs-rails (2.4.0)
+      railties (>= 3.1)
     multi_json (1.8.2)
     polyglot (0.3.3)
     rack (1.5.2)
@@ -142,11 +162,14 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.1.2)
   cancan
   database_cleaner
+  ember-rails
+  ember-source (= 1.1.2)
   factory_girl_rails
   inherited_resources
   jbuilder (~> 1.2)
   jquery-rails
   json_spec
+  momentjs-rails
   rails (= 4.0.1)
   rspec-rails
   sass-rails (~> 4.0.0)

@@ -9,6 +9,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'cancan'
+gem 'ember-rails'
+gem 'ember-source', '1.1.2'
+gem 'momentjs-rails'
 
 
 group :test do

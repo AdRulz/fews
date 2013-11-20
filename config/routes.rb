@@ -14,4 +14,6 @@ Fews::Application.routes.draw do
     end
   end
 
+  root to: 'home#index'
+  get "(*any)", to: 'home#index'
 end

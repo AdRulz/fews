@@ -16,6 +16,8 @@ describe 'Articles API' do
     it "respond with json collection of articles" do
       expect(response.body).to have_json_path "articles/0/title"
       expect(response.body).to have_json_path "articles/0/body"
+      expect(response.body).to have_json_path "articles/0/email"
+      expect(response.body).to have_json_path "articles/0/votes_count"
     end
   end
 

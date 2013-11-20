@@ -1,0 +1,28 @@
+{{#each controller}}
+
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-2">
+    {{#linkTo 'article' this}}
+    <h3>{{title}}</h3>
+    {{/linkTo}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-2 text-center">
+    <div class="article-day text-center">
+      {{moment createdAt format='D'}}
+    </div>
+    <div class="article-weekday text-center">
+      {{moment createdAt format='dddd'}}
+    </div>
+    <span class='label label-primary'>
+      <span class="glyphicon glyphicon-thumbs-up"></span> 10
+    </span>
+  </div>
+  <div class="col-xs-10">
+    <p> {{limit body to='300' }} </p>
+    <hr />
+  </div>
+</div>
+
+{{/each}}

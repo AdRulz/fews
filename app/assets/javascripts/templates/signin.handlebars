@@ -1,0 +1,16 @@
+<li> 
+<a data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-lock"></span></a>
+<div class="dropdown-menu dropdown-form">
+  <form role="form">
+    <div {{bindAttr class=":form-group view.hasEmailError:has-error"}} data-prevent-close='true'>
+      <label>Email address</label>
+      {{input type="email" classNames="form-control" placeholder="Enter email" value=email}}
+    </div>
+    <div {{bindAttr class=":form-group view.hasPasswordError:has-error"}} data-prevent-close='true'>
+      <label>Password</label>
+      {{input type="password" classNames="form-control" placeholder="Password" value=password}}
+    </div>
+    <button {{action submit}} class="btn btn-primary btn-block" data-prevent-close='true'>Submit</button>
+  </form>
+</div>
+</li>
