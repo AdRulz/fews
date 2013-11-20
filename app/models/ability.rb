@@ -10,5 +10,6 @@ class Ability
     can :update, Article, user_id: user.id
     can :destroy, Article, user_id: user.id
 
+    can :read, User, id: user.id
   end
 end

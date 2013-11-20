@@ -14,6 +14,7 @@ describe "login", "POST /api/v1/sessions.json" do
 
     it "respond with auth token" do
       expect(response.body).to have_json_path "session/token"
+      expect(response.body).to have_json_path "session/user_id"
     end
   end
 

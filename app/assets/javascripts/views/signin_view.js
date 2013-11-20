@@ -1,6 +1,6 @@
 Fews.SigninView = Ember.View.extend({
   templateName: 'signin',
-  classNames: ["nav navbar-nav", "navbar-right"],
+  tagName: 'li',
 
   click: function (e) {
     if (this.shouldKeepOpened(e.target)) {

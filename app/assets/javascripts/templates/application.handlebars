@@ -4,11 +4,13 @@
       <a class="navbar-brand" href="/">fews</a>
     </div>
 
-    {{#if controller.session.isAuthenticated}}
-      Logout
-    {{else}}
+    <ul class="nav navbar-nav navbar-right">
+      {{#if controller.session.isAuthenticated}}
+      {{render 'profile'}}
+      {{else}}
       {{render 'signin'}}
-    {{/if}}
+      {{/if}}
+    </ul>
 
   </div>
 </div>
