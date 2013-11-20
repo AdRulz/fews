@@ -18,7 +18,7 @@ class Api::V1::BaseController < InheritedResources::Base
   end
 
   def authenticate_with_token
-    token = params[:token]
+    token = request.headers["X-Auth-Token"]
     if token
       @current_user = User.where({token: token}).first
     else

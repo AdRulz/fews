@@ -2,6 +2,12 @@ module Api::V1
   class ArticlesController < BaseController
     load_and_authorize_resource except: [ :vote, :my ]
 
+    def create
+      @article = Article.new permitted_params[:article]
+      @article.user = current_user
+      create!
+    end
+
     def vote
       article = Article.find(params[:id])
       if article.votes.where({client_id: client_id}).empty?

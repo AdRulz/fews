@@ -2,10 +2,14 @@
   <span class="caret"></span>
 </a>
 <ul class="dropdown-menu">
-  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">
+  <li role="presentation">
+  {{#linkTo 'user' session.currentUser}}
     My few articles 
     <span class="badge pull-right">{{session.currentUser.articles.length}}</span>
-  </a>
+  {{/linkTo}}
+  {{#linkTo 'articles.new'}}
+    Create article
+  {{/linkTo}}
   </li>
 
   <li role="presentation" class="divider"></li>

@@ -9,31 +9,31 @@ Fews.Session = Ember.Object.extend({
 
 
   isAuthenticated: function () {
-    return this.get('token');
+    return this.get('token') && this.get('userId');
   }.property('token'),
 
 
   authenticate: function (userId, token) {
-    this.set('userId', userId);
     this.set('token', token);
+    this.set('userId', userId);
+    this.ensureCurrentUser();
+
     this.syncCookie();
 
-    this.ensureCurrentUser();
   },
 
   unauthenticate: function () {
-    this.setProperties({
-      token: null,
-      currentUser: null,
-    });
+    this.set('token', null);
+    this.ensureCurrentUser();
     this.syncCookie();
-    var router = Fews.__container__.lookup('router:main');
-    router.transitionTo('feed');
   },
 
   ensureCurrentUser: function () {
-    var router = Fews.__container__.lookup('router:main');
-    router.transitionTo('user', this.get('userId'));
+    var user, store = Fews.__container__.lookup('store:main');
+    if (this.get('isAuthenticated')) {
+      user = store.find('user', this.get('userId'));
+    }
+    this.set('currentUser', user);
   },
 
   syncCookie: function () {
@@ -51,6 +51,7 @@ Fews.Session = Ember.Object.extend({
   restore: function () {
     this.set('token', $.cookie('token'));
     this.set('userId', $.cookie('userId'));
+    this.ensureCurrentUser();
   },
 
 });

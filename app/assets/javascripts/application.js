@@ -19,13 +19,7 @@ Fews = Ember.Application.create();
 $.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
   var session = Fews.__container__.lookup('session:main');
   var token = session.get('token');
-  var tokenData = "&token="+token;
-
-  if(options.data){
-    options.data += tokenData;
-  } else {
-    options.data = tokenData;
-  }
+  jqXHR.setRequestHeader('X-Auth-Token', token);
 
 });
 

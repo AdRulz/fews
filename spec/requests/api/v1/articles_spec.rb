@@ -16,7 +16,8 @@ describe 'Articles API' do
     it "respond with json collection of articles" do
       expect(response.body).to have_json_path "articles/0/title"
       expect(response.body).to have_json_path "articles/0/body"
-      expect(response.body).to have_json_path "articles/0/email"
+      expect(response.body).to have_json_path "articles/0/author/email"
+      expect(response.body).to have_json_path "articles/0/author/id"
       expect(response.body).to have_json_path "articles/0/votes_count"
     end
   end
@@ -24,7 +25,7 @@ describe 'Articles API' do
   describe "list my articles", "GET /api/v1/articles/my.json" do
     context 'as an authenticated user' do
       it 'success (200)' do
-        get "/api/v1/articles/my.json", token: 'xxx'
+        get "/api/v1/articles/my.json", nil,  {'X-Auth-Token' => "xxx"}
         expect(response.status).to eql 200
       end
     end
@@ -66,7 +67,7 @@ describe 'Articles API' do
 
     context 'as an authenticated user' do
       before do
-        post "/api/v1/articles.json", article: {title: 'My artile', body: 'Text'}, token: 'xxx'
+        post "/api/v1/articles.json", {article: {title: 'My artile', body: 'Text'}}, {'X-Auth-Token'=>'xxx'}
       end
 
       it 'created (201)' do
@@ -76,7 +77,7 @@ describe 'Articles API' do
 
     context 'as an guest' do
       before do
-        post "/api/v1/articles.json", article: {title: 'My artile', body: 'Text'}, token: ''
+        post "/api/v1/articles.json", {article: {title: 'My artile', body: 'Text'}}
       end
 
       it 'unauthorized (401)' do
@@ -91,7 +92,7 @@ describe 'Articles API' do
 
     context 'as an author' do
       before do
-        put "/api/v1/articles/#{article.id}.json/", article: {title: 'Updated title'}, token: 'xxx'
+        put "/api/v1/articles/#{article.id}.json/", {article: {title: 'Updated title'}}, {'X-Auth-Token'=>'xxx'}
       end
 
       it 'success (200)' do
@@ -116,7 +117,7 @@ describe 'Articles API' do
 
     context 'as an author' do
       it 'success (204)' do
-        delete "/api/v1/articles/#{article.id}.json/", token: 'xxx'
+        delete "/api/v1/articles/#{article.id}.json/", nil, { 'X-Auth-Token' => 'xxx'}
         expect(response.status).to eql 204
       end
     end

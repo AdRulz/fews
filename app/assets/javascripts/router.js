@@ -3,14 +3,16 @@ Fews.Router.reopen({
 });
 
 Fews.Router.map(function() {
-   this.route('feed', { path: '/'});
-   this.route('article', { path: '/article/:article_id'});
-   this.resource('user', { path: '/user/:user_id' }, function () {
-     this.route('index', { path: '/'});
+  this.route('feed', { path: '/'});
+  this.resource('articles', { path: '/articles'}, function () {
+    this.route('new');
+  });
 
-     // create art
-     // edit + delete art
+  this.route('article', { path: '/article/:article_id'});
+  this.resource('user', { path: '/user/:user_id' }, function () {
+    this.route('index', { path: '/'});
+  });
 
-     
-   });
+  this.route('signInFirst',{ path: 'sign-in-first' });
+
 });
