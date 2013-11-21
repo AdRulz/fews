@@ -10,7 +10,8 @@ module Api::V1
 
     def vote
       article = Article.find(params[:id])
-      if article.votes.where({client_id: client_id}).empty?
+      vote = Vote.new article: article
+      if vote.save
         render json: nil, status: 200
       else
         render json: nil, status: 400

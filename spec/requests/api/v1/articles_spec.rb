@@ -41,26 +41,10 @@ describe 'Articles API' do
   describe 'vote for article', "POST /api/v1/articles/id.json" do
     let!(:article) { create :article }
 
-    context 'when client_id provided' do
-      it 'success (200) for first time' do
+      it 'success (200)' do
         post "/api/v1/articles/#{article.id}/vote.json", client_id: '100'
         expect(response.status).to eql 200
       end
-
-      it 'fails if more than once with the same id' do
-        create :vote, article: article, client_id: '100'
-        post "/api/v1/articles/#{article.id}/vote.json", client_id: '100'
-        expect(response.status).to eql 400
-      end
-
-    end
-
-    context 'when client_id missing' do
-      it 'bad request (400)' do
-        post "/api/v1/articles/#{article.id}/vote.json"
-        expect(response.status).to eql 400
-      end
-    end
   end
 
   describe 'create new article', "POST /api/v1/articles.json" do

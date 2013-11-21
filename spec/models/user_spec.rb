@@ -20,6 +20,15 @@ describe User do
     it "exist" do
       expect(user).to respond_to :token
     end
+
+    it "generated on model create" do
+      user = build :user, token: nil
+      expect{
+        user.save
+      }.to change(user, :token)
+
+    end
+
   end
 
   it "has many articles" do

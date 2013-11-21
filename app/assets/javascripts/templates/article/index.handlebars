@@ -11,8 +11,8 @@
       <ul class="dropdown-menu" role="menu">
         <li role="presentation">
         {{#linkTo 'article.edit' this}}
-          Edit
-          <span class="glyphicon glyphicon-edit pull-right"></span>
+        Edit
+        <span class="glyphicon glyphicon-edit pull-right"></span>
         {{/linkTo}}
         </li>
         <li role="presentation"><a role="menuitem" tabindex="-1" {{action delete}}>
@@ -34,15 +34,31 @@
     <div class="article-weekday text-center">
       {{moment createdAt format='dddd'}}
     </div>
+    <br />
 
-    {{#with votesCount}}
-      <span class='label label-primary'>
-        <span class="glyphicon glyphicon-thumbs-up"></span> {{this}}
-      </span>
-    {{/with}}
+    <div class='votes'>
+      {{#if isVoted}}
+      <button type="button" class="btn btn-sm btn-block pull-left btn-default active">
+        <span class="glyphicon glyphicon-thumbs-up"></span> {{votesCount}}
+      </button>
+      {{else}}
+      <button {{action voteArticle this}} type="button" class="btn btn-sm btn-block pull-left btn-primary">
+        <span class="glyphicon glyphicon-thumbs-up"></span> {{votesCount}}
+      </button>
+      {{/if}}
+    </div>
 
   </div>
   <div class="col-xs-10">
     <p> {{body}} </p>
+
+    <hr />
+    <div class="pull-right">
+      Author: 
+      <a {{bindAttr href="authorMailTo"}}>
+        {{author.email}}
+      </a>
+    </div>
   </div>
 </div>
+

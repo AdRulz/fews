@@ -2,16 +2,15 @@ Fews.Session = Ember.Object.extend({
   token: null,
   userId: null,
   currentUser: null,
+  votes: [],
 
   init: function () {
     this.restore();
   },
 
-
   isAuthenticated: function () {
     return this.get('token') && this.get('userId');
   }.property('token'),
-
 
   authenticate: function (userId, token) {
     this.set('token', token);
@@ -36,8 +35,17 @@ Fews.Session = Ember.Object.extend({
     this.set('currentUser', user);
   },
 
+
+  rememberVote: function (article) {
+    this.get("votes").push( article.get('id'));
+    this.syncCookie();
+
+  },
+
   syncCookie: function () {
     var token = this.get("token");
+    $.cookie('votes', this.get('votes').uniq().join());
+
     if(token){
       $.cookie('token', this.get('token'));
       $.cookie('userId', this.get('userId'));
@@ -49,8 +57,12 @@ Fews.Session = Ember.Object.extend({
   },
 
   restore: function () {
-    this.set('token', $.cookie('token'));
-    this.set('userId', $.cookie('userId'));
+    var votes = $.cookie('votes') || '';
+    this.setProperties({
+      token: $.cookie('token'),
+      userId: $.cookie('userId'),
+      votes: votes.split(',')
+    });
     this.ensureCurrentUser();
   },
 
