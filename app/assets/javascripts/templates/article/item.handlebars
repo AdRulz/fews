@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-xs-10 col-xs-offset-2">
+  <div class="col-xs-9 col-xs-offset-3 col-sm-10 col-sm-offset-2">
     {{#linkTo 'article' this}}
     <h3>{{title}}</h3>
     {{/linkTo}}
@@ -8,12 +8,17 @@
 </div>
 
 <div class="row">
-  <div class="col-xs-2 text-center">
+  <div class="col-xs-3 col-sm-2 text-center">
     <div class="article-day text-center">
       {{moment createdAt format='D'}}
     </div>
     <div class="article-weekday text-center">
-      {{moment createdAt format='dddd'}}
+      <span class="visible-xs">
+        {{moment createdAt format='ddd'}}
+      </span>
+      <span class="hidden-xs">
+        {{moment createdAt format='dddd'}}
+      </span>
     </div>
     {{#with votesCount}}
     <span class='label label-primary'>
@@ -23,7 +28,7 @@
 
 
   </div>
-  <div class="col-xs-10">
+  <div class="col-xs-9 col-sm-10">
     <p> {{limit body to='300' }} </p>
 
     <hr />
