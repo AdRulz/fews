@@ -12,4 +12,13 @@ Fews.ArticlesNewRoute = Ember.Route.extend({
     return this.get("store").createRecord('article');
   },
 
+  actions: {
+    willTransition: function (transition) {
+      var model = this.get('currentModel');
+      if(model.get('isNew')){
+        model.deleteRecord();
+      }
+    },
+  }
+
 });
