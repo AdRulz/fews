@@ -1,11 +1,11 @@
 require "spec_helper"
 
 describe "get user info", "GET /api/v1/users/id.json" do
-  let!(:user) { create :user, token: 'xxx' } # adil.jarulin@gmail.com, 1233321
+  let!(:user) { create :user  } # adil.jarulin@gmail.com, 1233321
 
   context 'as an user himself' do
     before do
-      get "/api/v1/users/#{user.id}.json", token: 'xxx'
+      get "/api/v1/users/#{user.id}.json", nil,  {'X-Auth-Token'=> user.token}
     end
 
     it 'success (200)' do

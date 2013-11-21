@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe 'Articles API' do
-  let!(:user) { create :user, token: 'xxx' }
+  let!(:user) { create :user }
 
   describe "list all articles", "GET /api/v1/articles.json" do
     before do
@@ -25,7 +25,7 @@ describe 'Articles API' do
   describe "list my articles", "GET /api/v1/articles/my.json" do
     context 'as an authenticated user' do
       it 'success (200)' do
-        get "/api/v1/articles/my.json", nil,  {'X-Auth-Token' => "xxx"}
+        get "/api/v1/articles/my.json", nil,  {'X-Auth-Token' => user.token }
         expect(response.status).to eql 200
       end
     end
@@ -51,7 +51,7 @@ describe 'Articles API' do
 
     context 'as an authenticated user' do
       before do
-        post "/api/v1/articles.json", {article: {title: 'My artile', body: 'Text'}}, {'X-Auth-Token'=>'xxx'}
+        post "/api/v1/articles.json", {article: {title: 'My artile', body: 'Text'}}, {'X-Auth-Token'=>user.token}
       end
 
       it 'created (201)' do
@@ -71,12 +71,12 @@ describe 'Articles API' do
   end
 
   describe 'update article', "PUT /api/v1/articles.json" do
-    let(:user) { create :user, token: 'xxx' }
+    let(:user) { create :user }
     let!(:article) { create :article, user: user }
 
     context 'as an author' do
       before do
-        put "/api/v1/articles/#{article.id}.json/", {article: {title: 'Updated title'}}, {'X-Auth-Token'=>'xxx'}
+        put "/api/v1/articles/#{article.id}.json/", {article: {title: 'Updated title'}}, {'X-Auth-Token'=>user.token}
       end
 
       it 'success (200)' do
@@ -96,12 +96,12 @@ describe 'Articles API' do
   end
 
   describe 'delete article', "DELETE /api/v1/articles.json" do
-    let(:user) { create :user, token: 'xxx' }
+    let(:user) { create :user}
     let!(:article) { create :article, user: user }
 
     context 'as an author' do
       it 'success (204)' do
-        delete "/api/v1/articles/#{article.id}.json/", nil, { 'X-Auth-Token' => 'xxx'}
+        delete "/api/v1/articles/#{article.id}.json/", nil, { 'X-Auth-Token' => user.token}
         expect(response.status).to eql 204
       end
     end
