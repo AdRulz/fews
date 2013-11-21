@@ -29,19 +29,7 @@
 <div class="row">
   <div class="col-xs-3 col-sm-2 text-center">
 
-    <div class="article-day text-center">
-      {{moment createdAt format='D'}}
-    </div>
-
-    <div class="article-weekday text-center">
-      <span class="visible-xs">
-        {{moment createdAt format='ddd'}}
-      </span>
-      <span class="hidden-xs">
-        {{moment createdAt format='dddd'}}
-      </span>
-    </div>
-
+    {{partial 'article/date'}}
     <br />
 
     <div class='votes'>

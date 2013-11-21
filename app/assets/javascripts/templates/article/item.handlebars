@@ -9,17 +9,9 @@
 
 <div class="row">
   <div class="col-xs-3 col-sm-2 text-center">
-    <div class="article-day text-center">
-      {{moment createdAt format='D'}}
-    </div>
-    <div class="article-weekday text-center">
-      <span class="visible-xs">
-        {{moment createdAt format='ddd'}}
-      </span>
-      <span class="hidden-xs">
-        {{moment createdAt format='dddd'}}
-      </span>
-    </div>
+
+    {{partial 'article/date'}}
+
     {{#with votesCount}}
     <span class='label label-primary'>
       <span class="glyphicon glyphicon-thumbs-up"></span> {{this}}
@@ -28,9 +20,8 @@
   </div>
 
   <div class="col-xs-9 col-sm-10">
-    <p> {{limit body to='300' }} </p>
+    <p> {{limit body to='300'}} </p>
   </div>
-
 
 </div>
 

@@ -39,15 +39,16 @@ describe Article do
 
   describe 'ordering' do
 
-    it 'DESC by rating and grouped by day (also DESC)' do
+    it 'DESC by rating then by date (also DESC)' do
       articles = create_list :article, 4, votes_count: 1
-      articles[0].votes_count = 5
+      articles[0].votes_count = 6
       articles[1].created_at = Date.yesterday
+      # articles[2]
       articles[3].created_at = Date.yesterday
-      articles[3].votes_count = 6
+      articles[3].votes_count = 2
       articles.each(&:save)
 
-      expect(Article.all.to_a).to eql [ articles[0], articles[2], articles[3], articles[1]]
+      expect(Article.all.to_a).to eql [ articles[0], articles[3], articles[2], articles[1]]
     end
 
   end

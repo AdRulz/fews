@@ -3,5 +3,6 @@ class Article < ActiveRecord::Base
   has_many :votes
   validates :title, presence: true
   validates :body, presence: true
-  default_scope  { order(created_at: :desc, votes_count: :desc) }
+  default_scope  { order(votes_count: :desc, created_at: :desc) }
+
 end
