@@ -1,7 +1,10 @@
 @import 'bootstrap';
+@import 'compass';
 
 body{
   padding-top: 50px;
+  background: image-url('newspaper.jpg') fixed;
+  background-size: cover;
 }
 
 .container{
@@ -12,6 +15,18 @@ body{
   font-size: 44px;
   font-weight: 200;
   text-transform: uppercase;
+  a, a:hover{
+    color: #fff;
+    text-decoration: none;
+  }
+
+
+  .invert{
+    color:#2fa4e7;
+    background: #fff;
+    padding: 0 4px;
+    margin: 0 2px;
+  }
 }
 
 .article-day{
@@ -25,10 +40,20 @@ body{
   text-transform: uppercase;
 
 }
-.article-action{
-  margin-top: 20px;
-}
 
+.content-panel{
+  @include border-radius(4px);
+  @include box-shadow(0 0 8px);
+  padding: 20px 10px 30px 10px;
+  margin: 14px 0;
+  background: #fff;
+  position: relative;
+
+  .panel-heading{
+    margin: -20px -10px 10px -10px;
+    padding: 10px;
+  }
+}
 
 .dropdown-menu{
   min-width: 200px;

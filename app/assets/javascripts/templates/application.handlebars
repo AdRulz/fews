@@ -8,7 +8,12 @@
         <span class="icon-bar"></span>
       </button>
 
-      {{#linkTo 'feed' classNames='navbar-brand'}}fews{{/linkTo}}
+      <div class="navbar-brand">
+      {{#linkTo 'feed' classNames='pull-left'}}fews{{/linkTo}}
+      {{#if pageHeader}}
+        <span class="invert">{{pageHeader}}</span>
+      {{/if}}
+      </div>
     </div>
 
     <div class="collapse navbar-collapse">

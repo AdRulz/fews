@@ -4,6 +4,7 @@ gem 'rails', '4.0.1'
 gem 'inherited_resources'
 gem "active_model_serializers"
 gem 'sass-rails', '~> 4.0.0'
+gem 'compass-rails', "~> 2.0.alpha.0"
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
@@ -12,6 +13,7 @@ gem 'ember-rails'
 gem 'ember-source', '1.1.2'
 gem 'momentjs-rails'
 gem 'jquery-cookie-rails'
+gem 'groupdate'
 gem 'pg'
 
 group :development do

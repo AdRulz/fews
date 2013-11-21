@@ -15,7 +15,7 @@ Fews.ArticleRoute = Ember.Route.extend({
 
     cancel: function () {
       this.get('currentModel').rollback();
-      this.transitionTo('feed');
+      this.transitionTo('article', this.get('currentModel'));
     },
 
     delete: function () {
