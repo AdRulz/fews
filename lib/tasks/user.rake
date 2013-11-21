@@ -7,8 +7,10 @@ namespace :user do
     email = STDIN.gets.strip
     STDOUT.puts "Password:"
     password = STDIN.noecho(&:gets)
+    password = password.chomp
     STDOUT.puts "Confirm password:"
     password_confirm = STDIN.noecho(&:gets)
+    password_confirm = password_confirm.chomp
 
     user = User.new({email:email, password: password, password_confirmation: password_confirm})
 

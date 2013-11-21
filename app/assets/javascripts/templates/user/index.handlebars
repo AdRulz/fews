@@ -2,5 +2,12 @@
 
 {{#each controller.articles}}
   {{render 'article/item' this}}
+{{else}}
+
+<div class="jumbotron text-center">
+  <p>You don't have any articles yet</p>
+  {{#linkTo 'articles.new' classNames='btn btn-primary btn-lg btn-block'}} Create first one {{/linkTo}}
+</div>
+
 {{/each}}
 

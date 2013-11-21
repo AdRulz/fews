@@ -28,11 +28,14 @@ Fews.Session = Ember.Object.extend({
   },
 
   ensureCurrentUser: function () {
-    var user, store = Fews.__container__.lookup('store:main');
+    var  store = Fews.__container__.lookup('store:main');
+    var session = this;
     if (this.get('isAuthenticated')) {
-      user = store.find('user', this.get('userId'));
+      store.find('user', this.get('userId')).then(function (user) {
+        session.set('currentUser', user);
+      });
     }
-    this.set('currentUser', user);
+    session.set('currentUser', null);
   },
 
 

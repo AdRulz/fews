@@ -5,8 +5,10 @@ Fews.ArticlesNewController = Ember.ObjectController.extend({
   actions: {
     submit: function () {
       var controller = this;
+      var user = controller.get('session.currentUser');
       this.get('model').save().then(function (model) {
         controller.transitionToRoute('article', model);
+        user.reload();
       });
 
     },

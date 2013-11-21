@@ -1,5 +1,5 @@
 Fews.FeedController = Ember.ArrayController.extend({
-  sortProperties: ['votesCount', 'createdAtTimestamp'],
+  sortProperties: ['createdAtTimestamp', 'votesCount'],
   sortAscending: false,
 
 });
