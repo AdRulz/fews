@@ -1,4 +1,5 @@
 class Api::V1::BaseController < InheritedResources::Base
+  before_filter :set_cache_buster
   before_filter :authenticate_with_token
   respond_to :json
 
