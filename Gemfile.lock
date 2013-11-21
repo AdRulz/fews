@@ -66,8 +66,6 @@ GEM
       factory_girl (~> 4.3.0)
       railties (>= 3.0.0)
     fssm (0.2.10)
-    groupdate (1.0.4)
-      activerecord (>= 3.0.0)
     handlebars-source (1.0.12)
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
@@ -179,7 +177,6 @@ DEPENDENCIES
   ember-rails
   ember-source (= 1.1.2)
   factory_girl_rails
-  groupdate
   inherited_resources
   jbuilder (~> 1.2)
   jquery-cookie-rails

@@ -13,7 +13,6 @@ gem 'ember-rails'
 gem 'ember-source', '1.1.2'
 gem 'momentjs-rails'
 gem 'jquery-cookie-rails'
-gem 'groupdate'
 gem 'pg'
 
 group :development do
